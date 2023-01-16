@@ -19,7 +19,7 @@ import { stringHelpers } from 'utils/helpers/stringHelpers';
 // store
 import { isSettingDrawerOpenState } from 'store';
 
-const VIEWS_TITLES = ['Home', 'About', 'Contact'];
+const VIEWS_TITLES = ['Home', 'About', 'Contact', 'My Skills', 'Search Skills'];
 
 export const NavBar = () => {
 	const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);

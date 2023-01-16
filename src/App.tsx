@@ -6,6 +6,7 @@ import { useRecoilValue } from 'recoil';
 // components
 import { NavBar } from 'components/NavBar';
 import { Router } from 'components/Router/';
+import { PageWrapper } from 'shared/core/layout/PageWrapper';
 
 // helpers
 import { getDesignTokens } from 'utils/helpers/themeHelpers';
@@ -21,7 +22,9 @@ export const App = () => {
 			<CssBaseline />
 			<>
 				<NavBar />
-				<Router />
+				<PageWrapper>
+					<Router />
+				</PageWrapper>
 			</>
 		</ThemeProvider>
 	);
