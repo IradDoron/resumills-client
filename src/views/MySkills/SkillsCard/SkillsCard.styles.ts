@@ -10,4 +10,5 @@ export const StyledCard = styled(Card)(({ theme }) => ({
 	flexDirection: 'column',
 	alignItems: 'center',
 	justifyContent: 'center',
+	width: '100%',
 }));

@@ -1,22 +1,75 @@
+// imports from 3rd party libraries
+import { useRecoilValue } from 'recoil';
+
 // components
 import { Chip, Typography } from 'shared/core/dataDisplay';
 import { Button } from 'shared/core/inputs';
-import { Box, Section, Stack } from 'shared/core/layout';
+import { Box, Stack } from 'shared/core/layout';
 import { Card } from 'shared/core/surfaces';
 import { SkillsCard } from 'views/MySkills/SkillsCard';
 
-// data
-import { skills } from 'data/skills';
+// store
+import { skillsState } from 'store';
 
-export const getSkillsByCategory = (category: string) => {
-	return skills.filter((skill) => skill.category === category);
+// types
+import { MySkill, MySkills as MySkillsType } from 'types';
+
+// helpers
+import { stringHelpers } from 'utils/helpers/stringHelpers';
+
+export const getSkillsByCategoryAndIsAdded = (
+	category: string,
+	isAdded: boolean,
+	skills: MySkillsType
+) => {
+	const skillsInCategory = skills[category];
+	const filteredSkills = skillsInCategory.filter(
+		(skill) => skill.isAdded === isAdded
+	);
+	return filteredSkills;
+};
+
+export const onlyAddedSkills = (skills: MySkillsType) => {
+	const skillsKeys = Object.keys(skills);
+	const addedSkills = skillsKeys.map((category) => {
+		return {
+			category,
+			skills: getSkillsByCategoryAndIsAdded(category, true, skills),
+		};
+	});
+	const removedEmptyCategories = addedSkills.filter(
+		(category) => category.skills.length > 0
+	);
+
+	return removedEmptyCategories;
+};
+
+export const convertSkillsObjectToArray = (skills: MySkillsType) => {
+	const skillsKeys = Object.keys(skills);
+	const skillsArray = skillsKeys.map((category) => {
+		return { category, skills: skills[category] };
+	});
+	return skillsArray;
+};
+
+export const getAddedSkills = (skills: MySkill[]) => {
+	const addedSkills = skills.filter((skill) => skill.isAdded);
+	return addedSkills;
+};
+
+export const getNotAddedSkills = (skills: MySkill[]) => {
+	const notAddedSkills = skills.filter((skill) => !skill.isAdded);
+	return notAddedSkills;
 };
 
 export const MySkills = () => {
+	const mySkills = useRecoilValue(skillsState);
+
 	return (
 		<Stack
 			sx={{
 				alignItems: 'center',
+				padding: '0 24px',
 			}}
 			spacing={4}
 		>
@@ -30,30 +83,104 @@ export const MySkills = () => {
 			>
 				Add Skill
 			</Button>
-			<Section
-				sx={{
-					margin: '0 auto',
-				}}
-				gap={2}
-			>
-				<SkillsCard>
-					<Typography variant="h2">Relevant Skills</Typography>
-					<Box>
-						{getSkillsByCategory('relevant').map((skill) => (
-							<Chip key={skill.id} label={skill.name} />
-						))}
-					</Box>
-				</SkillsCard>
+			<Stack spacing={3}>
+				{convertSkillsObjectToArray(mySkills).map((category) => {
+					const { skills, category: currCategory } = category;
+					return (
+						<SkillsCard key={currCategory}>
+							<Typography
+								variant="h2"
+								sx={{
+									fontSize: '2.5rem',
+								}}
+							>
+								{stringHelpers.toRegularCaseOnlyFirstLetterCapital(
+									currCategory
+								)}
+							</Typography>
+							<Stack
+								sx={{
+									flexDirection: 'row',
+									justifyContent: 'space-between',
+									width: '100%',
+								}}
+							>
+								<Box
+									sx={{
+										width: '50%',
+										display: 'flex',
+										flexDirection: 'column',
+										alignItems: 'center',
+									}}
+								>
+									<Typography
+										variant="h3"
+										sx={{
+											fontSize: '1.5rem',
+											marginBottom: '12px',
+										}}
+									>
+										Added
+									</Typography>
+									<Box
+										sx={{
+											display: 'flex',
+											flexDirection: 'row',
+											flexWrap: 'wrap',
+											justifyContent: 'center',
+											alignItems: 'center',
+											gap: '12px',
+										}}
+									>
+										{getAddedSkills(skills).map((skill) => {
+											const { skill: skillDefintion } = skill;
+											const { name } = skillDefintion;
 
-				<SkillsCard>
-					<Typography variant="h2">Related Skills</Typography>
-					<Box>
-						{getSkillsByCategory('related').map((skill) => (
-							<Chip key={skill.id} label={skill.name} />
-						))}
-					</Box>
-				</SkillsCard>
-			</Section>
+											return <Chip key={name} label={name} />;
+										})}
+									</Box>
+								</Box>
+								<Box
+									sx={{
+										width: '50%',
+										display: 'flex',
+										flexDirection: 'column',
+										alignItems: 'center',
+									}}
+								>
+									<Typography
+										variant="h3"
+										sx={{
+											fontSize: '1.5rem',
+											marginBottom: '12px',
+										}}
+									>
+										Not added
+									</Typography>
+									<Box
+										sx={{
+											display: 'flex',
+											flexDirection: 'row',
+											flexWrap: 'wrap',
+											justifyContent: 'center',
+											alignItems: 'center',
+											gap: '12px',
+										}}
+									>
+										{getNotAddedSkills(skills).map((skill) => {
+											const { skill: skillDefintion } = skill;
+											const { name } = skillDefintion;
+
+											return <Chip key={name} label={name} />;
+										})}
+									</Box>
+								</Box>
+							</Stack>
+						</SkillsCard>
+					);
+				})}
+			</Stack>
+
 			<Button
 				variant="contained"
 				color="secondary"
@@ -66,9 +193,39 @@ export const MySkills = () => {
 			<Card
 				sx={{
 					margin: '0 auto',
+					padding: '12px 24px',
+					width: '60%',
+					border: '1px solid green',
 				}}
 			>
-				{'placeholder for skills'}
+				<Stack spacing={2}>
+					{onlyAddedSkills(mySkills).map((category) => {
+						const { category: currCategory, skills } = category;
+
+						return (
+							<Stack
+								sx={{
+									alignItems: 'flex-start',
+								}}
+							>
+								<Typography
+									variant="h3"
+									sx={{
+										fontSize: '1.4rem',
+									}}
+								>
+									{`${stringHelpers.toRegularCase(currCategory)}:`}
+								</Typography>
+
+								{skills.map((skill, index, array) => {
+									const { name } = skill.skill;
+									console.log(name);
+									return <Typography>{`- ${name}`}</Typography>;
+								})}
+							</Stack>
+						);
+					})}
+				</Stack>
 			</Card>
 		</Stack>
 	);

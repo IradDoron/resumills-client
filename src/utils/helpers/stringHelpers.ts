@@ -71,6 +71,43 @@ function toScreamingSnakeCase(str: string): string {
 		.toUpperCase();
 }
 
+/**
+ * This function converts a string to Regular Case format.
+ * This is the default format for the string.
+ * @param {string} str - The input string to be converted.
+ * @returns {string} The string in Regular Case format.
+ * @example
+ * toRegularCase('hello-world'); // 'hello world'
+ * toRegularCase('hello_world'); // 'hello world'
+ * toRegularCase('hello world'); // 'hello world'
+ * toRegularCase('helloWorld'); // 'hello world'
+ * toRegularCase('HelloWorld'); // 'hello world'
+ * toRegularCase('helloWorld'); // 'hello world'
+ */
+function toRegularCase(str: string): string {
+	return str
+		.replace(/([-_\s]\w)/g, (matches) => matches[1].toUpperCase())
+		.replace(/[\s-_]+/g, ' ');
+}
+
+/**
+ * This function converts a string to Regular Case format.
+ * This is the default format for the string.
+ * @param {string} str - The input string to be converted.
+ * @returns {string} The string in Regular Case format.
+ * @example
+ * toRegularCaseOnlyFirstLetterCapital('hello-world'); // 'Hello world'
+ * toRegularCaseOnlyFirstLetterCapital('hello_world'); // 'Hello world'
+ * toRegularCaseOnlyFirstLetterCapital('hello world'); // 'Hello world'
+ * toRegularCaseOnlyFirstLetterCapital('helloWorld'); // 'Hello world'
+ */
+function toRegularCaseOnlyFirstLetterCapital(str: string): string {
+	return str
+		.replace(/([-_\s]\w)/g, (matches) => matches[1].toUpperCase())
+		.replace(/[\s-_]+/g, ' ')
+		.replace(/^\w/, (matches) => matches.toUpperCase());
+}
+
 export const stringHelpers = {
 	toKebabCase,
 	toCamelCase,
@@ -78,4 +115,6 @@ export const stringHelpers = {
 	toPascalCase,
 	toTrainCase,
 	toScreamingSnakeCase,
+	toRegularCase,
+	toRegularCaseOnlyFirstLetterCapital,
 };

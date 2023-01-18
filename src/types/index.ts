@@ -13,13 +13,38 @@ export interface CustomPaletteModeState {
 	ethereal: 'ethereal';
 }
 
-export interface Skill {
+export interface SkillDefinition {
 	id: string;
 	name: string;
-	category: 'relevant' | 'related';
+	description: string;
+}
+
+export interface CategoryDefinition {
+	/**
+	 * The key is the skill name
+	 */
+	[key: string]: SkillDefinition;
+}
+
+export interface SkillDefinitions {
+	/**
+	 * The key is the category name
+	 */
+	[key: string]: CategoryDefinition;
+}
+
+export interface MySkill {
+	skill: SkillDefinition;
+	relevence: 'relevant' | 'related' | 'other' | 'notRelevant';
+	isAdded: boolean;
 	level?: string;
-	description?: string;
 	priority?: number;
 	workingXp?: number;
-	isAdded?: boolean;
+}
+
+export interface MySkills {
+	/**
+	 * The key is the category name
+	 */
+	[key: string]: MySkill[];
 }

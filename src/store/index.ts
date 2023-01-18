@@ -3,11 +3,11 @@ import { atom, RecoilState } from 'recoil';
 import { THEMES_NAMES } from 'utils/constants';
 
 // types
-import { Skill } from 'types';
+import { MySkills } from 'types';
 
 export const themeState = atom({
 	key: 'themeState',
-	default: 'dark',
+	default: 'springtime',
 }) as RecoilState<typeof THEMES_NAMES[number]>;
 
 export const isSettingDrawerOpenState = atom({
@@ -15,7 +15,7 @@ export const isSettingDrawerOpenState = atom({
 	default: false,
 }) as RecoilState<boolean>;
 
-export const skillsState = atom({
-	key: 'skillsState',
-	default: [],
-}) as RecoilState<Skill[]> | RecoilState<never[]>;
+export const skillsState: RecoilState<MySkills> = atom({
+	key: 'mySkillsState',
+	default: [] as any, // TODO: fix this
+});
