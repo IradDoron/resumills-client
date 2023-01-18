@@ -55,7 +55,7 @@ export const SettingDrawer = () => {
 										selected={theme === themeName}
 										onClick={handleThemeChange}
 									>
-										{stringHelpers.toPascalCase(themeName)}
+										{stringHelpers.formatString(themeName, 'PascalCase')}
 									</ToggleButton>
 								))}
 							</ToggleButtonGroup>

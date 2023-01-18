@@ -1,120 +1,125 @@
-/**
- * This function converts a string to kebab-case format.
- *
- * @param {string} str - The input string to be converted.
- * @returns {string} The string in kebab-case format.
- */
-function toKebabCase(str: string): string {
-	return str
-		.replace(/([a-z])([A-Z])/g, '$1-$2')
-		.replace(/[\s_]+/g, '-')
-		.toLowerCase();
-}
+const isIncludeCapitalLetter = (str: string): boolean => {
+	return str.toLowerCase() !== str;
+};
 
-/**
- * This function converts a string to snake_case format.
- *
- * @param {string} str - The input string to be converted.
- * @returns {string} The string in snake_case format.
- */
-function toSnakeCase(str: string): string {
-	return str
-		.replace(/([a-z])([A-Z])/g, '$1_$2')
-		.replace(/[\s-]+/g, '_')
-		.toLowerCase();
-}
+const convertStringToLowerCaseArrayOfWords = (str: string): string[] => {
+	let words = [];
 
-/**
- * This function converts a string to camelCase format.
- *
- * @param {string} str - The input string to be converted.
- * @returns {string} The string in camelCase format.
- */
-function toCamelCase(str: string): string {
-	return str.replace(/([-_\s]\w)/g, (matches) => matches[1].toUpperCase());
-}
+	if (str.includes(' ') || str.includes('-') || str.includes('_')) {
+		// deal with kebab-case, snake_case, and regular case
+		words = str.split(/[-_\s]/);
+	} else if (isIncludeCapitalLetter(str)) {
+		// deal with camelCase and PascalCase
+		const newStr = str.replace(/([A-Z])/g, ' $1');
+		words = newStr.split(' ');
+	} else {
+		words.push(str);
+	}
 
-/**
- * This function converts a string to PascalCase format.
- *
- * @param {string} str - The input string to be converted.
- * @returns {string} The string in PascalCase format.
- */
-function toPascalCase(str: string): string {
-	return str
-		.replace(/([-_\s]\w)/g, (matches) => matches[1].toUpperCase())
-		.replace(/^\w/, (matches) => matches.toUpperCase());
-}
+	return words.map((word) => word.toLowerCase());
+};
 
-/**
- * This function converts a string to train-case format.
- *
- * @param {string} str - The input string to be converted.
- * @returns {string} The string in train-case format.
- */
-function toTrainCase(str: string): string {
-	return str
-		.replace(/([-_\s]\w)/g, (matches) => matches[1].toUpperCase())
-		.replace(/[\s-_]+/g, '-');
-}
+const toKebabCase = (str: string): string => {
+	const words = convertStringToLowerCaseArrayOfWords(str);
+	return words.join('-');
+};
 
-/**
- * This function converts a string to SCREAMING_SNAKE_CASE format.
- *
- * @param {string} str - The input string to be converted.
- * @returns {string} The string in SCREAMING_SNAKE_CASE format.
- */
-function toScreamingSnakeCase(str: string): string {
-	return str
-		.replace(/([a-z])([A-Z])/g, '$1_$2')
-		.replace(/[\s-]+/g, '_')
-		.toUpperCase();
-}
+const toCamelCase = (str: string): string => {
+	const words = convertStringToLowerCaseArrayOfWords(str);
+	return words
+		.map((word, index) => {
+			if (index === 0) {
+				return word;
+			} else {
+				return word.charAt(0).toUpperCase() + word.slice(1);
+			}
+		})
+		.join('');
+};
 
-/**
- * This function converts a string to Regular Case format.
- * This is the default format for the string.
- * @param {string} str - The input string to be converted.
- * @returns {string} The string in Regular Case format.
- * @example
- * toRegularCase('hello-world'); // 'hello world'
- * toRegularCase('hello_world'); // 'hello world'
- * toRegularCase('hello world'); // 'hello world'
- * toRegularCase('helloWorld'); // 'hello world'
- * toRegularCase('HelloWorld'); // 'hello world'
- * toRegularCase('helloWorld'); // 'hello world'
- */
-function toRegularCase(str: string): string {
-	return str
-		.replace(/([-_\s]\w)/g, (matches) => matches[1].toUpperCase())
-		.replace(/[\s-_]+/g, ' ');
-}
+const toSnakeCase = (str: string): string => {
+	const words = convertStringToLowerCaseArrayOfWords(str);
+	return words.join('_');
+};
 
-/**
- * This function converts a string to Regular Case format.
- * This is the default format for the string.
- * @param {string} str - The input string to be converted.
- * @returns {string} The string in Regular Case format.
- * @example
- * toRegularCaseOnlyFirstLetterCapital('hello-world'); // 'Hello world'
- * toRegularCaseOnlyFirstLetterCapital('hello_world'); // 'Hello world'
- * toRegularCaseOnlyFirstLetterCapital('hello world'); // 'Hello world'
- * toRegularCaseOnlyFirstLetterCapital('helloWorld'); // 'Hello world'
- */
-function toRegularCaseOnlyFirstLetterCapital(str: string): string {
-	return str
-		.replace(/([-_\s]\w)/g, (matches) => matches[1].toUpperCase())
-		.replace(/[\s-_]+/g, ' ')
-		.replace(/^\w/, (matches) => matches.toUpperCase());
-}
+const toPascalCase = (str: string): string => {
+	const words = convertStringToLowerCaseArrayOfWords(str);
+	return words
+		.map((word) => {
+			return word.charAt(0).toUpperCase() + word.slice(1);
+		})
+		.join('');
+};
+
+const toTrainCase = (str: string): string => {
+	const words = convertStringToLowerCaseArrayOfWords(str);
+	return words
+		.map((word) => {
+			return word.charAt(0).toUpperCase() + word.slice(1);
+		})
+		.join('-');
+};
+
+const toScreamingSnakeCase = (str: string): string => {
+	const words = convertStringToLowerCaseArrayOfWords(str);
+	return words.join('_').toUpperCase();
+};
+
+const toRegularCase = (str: string): string => {
+	const words = convertStringToLowerCaseArrayOfWords(str);
+	return words
+		.map((word) => {
+			return word.charAt(0).toUpperCase() + word.slice(1);
+		})
+		.join(' ');
+};
+
+const toRegularCaseOnlyFirstLetterCapital = (str: string): string => {
+	const words = convertStringToLowerCaseArrayOfWords(str);
+	return words
+		.map((word, index) => {
+			if (index === 0) {
+				return word.charAt(0).toUpperCase() + word.slice(1);
+			} else {
+				return word;
+			}
+		})
+		.join(' ');
+};
+
+type StringsFormat =
+	| 'kebab-case'
+	| 'snake_case'
+	| 'camelCase'
+	| 'PascalCase'
+	| 'train-case'
+	| 'SCREAMING_SNAKE_CASE'
+	| 'Regular Case'
+	| 'Regular case only first letter capital';
+
+const formatString = (str: string, format: StringsFormat): string => {
+	switch (format) {
+		case 'kebab-case':
+			return toKebabCase(str);
+		case 'snake_case':
+			return toSnakeCase(str);
+		case 'camelCase':
+			return toCamelCase(str);
+		case 'PascalCase':
+			return toPascalCase(str);
+		case 'train-case':
+			return toTrainCase(str);
+		case 'SCREAMING_SNAKE_CASE':
+			return toScreamingSnakeCase(str);
+		case 'Regular Case':
+			return toRegularCase(str);
+		case 'Regular case only first letter capital':
+			return toRegularCaseOnlyFirstLetterCapital(str);
+		default:
+			return str;
+	}
+};
 
 export const stringHelpers = {
-	toKebabCase,
-	toCamelCase,
-	toSnakeCase,
-	toPascalCase,
-	toTrainCase,
-	toScreamingSnakeCase,
-	toRegularCase,
-	toRegularCaseOnlyFirstLetterCapital,
+	formatString,
 };

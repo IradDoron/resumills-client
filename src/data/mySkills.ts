@@ -171,34 +171,34 @@ export const mySkills: MySkills = {
 			isAdded: false,
 		},
 	],
-	UIUX: [
+	UiUx: [
 		{
-			skill: skillsDefinitions.UIUX['Adobe XD'],
+			skill: skillsDefinitions.UiUx['Adobe XD'],
 			relevence: 'relevant',
 			isAdded: false,
 		},
 		{
-			skill: skillsDefinitions.UIUX['Adobe Photoshop'],
+			skill: skillsDefinitions.UiUx['Adobe Photoshop'],
 			relevence: 'relevant',
 			isAdded: false,
 		},
 		{
-			skill: skillsDefinitions.UIUX['Adobe Illustrator'],
+			skill: skillsDefinitions.UiUx['Adobe Illustrator'],
 			relevence: 'relevant',
 			isAdded: false,
 		},
 		{
-			skill: skillsDefinitions.UIUX['Adobe InDesign'],
+			skill: skillsDefinitions.UiUx['Adobe InDesign'],
 			relevence: 'relevant',
 			isAdded: false,
 		},
 		{
-			skill: skillsDefinitions.UIUX['Adobe Dimension'],
+			skill: skillsDefinitions.UiUx['Adobe Dimension'],
 			relevence: 'relevant',
 			isAdded: false,
 		},
 		{
-			skill: skillsDefinitions.UIUX['Figma'],
+			skill: skillsDefinitions.UiUx['Figma'],
 			relevence: 'relevant',
 			isAdded: false,
 		},

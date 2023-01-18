@@ -62,6 +62,31 @@ export const getNotAddedSkills = (skills: MySkill[]) => {
 	return notAddedSkills;
 };
 
+export const getFormattedSkillsForCopy = (skills: MySkillsType) => {
+	let formattedSkills = '';
+	const skillsArray = convertSkillsObjectToArray(skills);
+	skillsArray.forEach((category) => {
+		const { skills, category: currCategory } = category;
+		const addedSkills = getAddedSkills(skills);
+		if (addedSkills.length === 0) return;
+		const formattedCategory = stringHelpers.formatString(
+			currCategory,
+			'Regular case only first letter capital'
+		);
+		let categoryTextBlock = '';
+
+		categoryTextBlock += `${formattedCategory}: \n`;
+
+		addedSkills.forEach((skill) => {
+			const { name } = skill.skill;
+			categoryTextBlock += `- ${name} \n`;
+		});
+
+		formattedSkills += `${categoryTextBlock} \n`;
+	});
+	return formattedSkills;
+};
+
 export const MySkills = () => {
 	const mySkills = useRecoilValue(skillsState);
 
@@ -94,9 +119,7 @@ export const MySkills = () => {
 									fontSize: '2.5rem',
 								}}
 							>
-								{stringHelpers.toRegularCaseOnlyFirstLetterCapital(
-									currCategory
-								)}
+								{stringHelpers.formatString(currCategory, 'Regular Case')}
 							</Typography>
 							<Stack
 								sx={{
@@ -181,29 +204,41 @@ export const MySkills = () => {
 				})}
 			</Stack>
 
-			<Button
-				variant="contained"
-				color="secondary"
-				sx={{
-					margin: '0 auto',
-				}}
-			>
-				Format Skills
-			</Button>
 			<Card
 				sx={{
 					margin: '0 auto',
 					padding: '12px 24px',
 					width: '60%',
 					border: '1px solid green',
+					position: 'relative',
 				}}
 			>
+				<Button
+					variant="outlined"
+					sx={{
+						position: 'absolute',
+						top: '8px',
+						right: '8px',
+					}}
+					onClick={() => {
+						navigator.clipboard.writeText(getFormattedSkillsForCopy(mySkills));
+					}}
+				>
+					<Typography variant="h3" sx={{ fontSize: '1.2rem' }}>
+						Copy
+					</Typography>
+				</Button>
 				<Stack spacing={2}>
 					{onlyAddedSkills(mySkills).map((category) => {
 						const { category: currCategory, skills } = category;
+						const formatedCategory = `${stringHelpers.formatString(
+							currCategory,
+							'Regular case only first letter capital'
+						)}:`;
 
 						return (
 							<Stack
+								key={currCategory}
 								sx={{
 									alignItems: 'flex-start',
 								}}
@@ -214,13 +249,14 @@ export const MySkills = () => {
 										fontSize: '1.4rem',
 									}}
 								>
-									{`${stringHelpers.toRegularCase(currCategory)}:`}
+									{formatedCategory}
 								</Typography>
 
-								{skills.map((skill, index, array) => {
+								{skills.map((skill) => {
 									const { name } = skill.skill;
-									console.log(name);
-									return <Typography>{`- ${name}`}</Typography>;
+									const formatedSkill = `- ${name}`;
+
+									return <Typography key={name}>{formatedSkill}</Typography>;
 								})}
 							</Stack>
 						);

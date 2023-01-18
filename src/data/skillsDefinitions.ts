@@ -362,7 +362,7 @@ export const skillsDefinitions: SkillDefinitions = {
 				'Selenium is a portable framework for testing web applications.',
 		},
 	},
-	UIUX: {
+	UiUx: {
 		'Adobe XD': {
 			id: '1',
 			name: 'Adobe XD',

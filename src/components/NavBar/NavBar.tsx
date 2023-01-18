@@ -57,7 +57,7 @@ export const NavBar = () => {
 							<NavLink
 								key={page}
 								onClick={handleCloseNavMenu}
-								to={`/${stringHelpers.toKebabCase(page)}`}
+								to={`/${stringHelpers.formatString(page, 'kebab-case')}`}
 							>
 								{page}
 							</NavLink>
@@ -105,7 +105,7 @@ export const NavBar = () => {
 								>
 									<NavLink
 										onClick={handleCloseNavMenu}
-										to={`/${stringHelpers.toKebabCase(page)}`}
+										to={`/${stringHelpers.formatString(page, 'kebab-case')}`}
 										sx={{
 											color: 'inherit',
 											textDecoration: 'none',
