@@ -5,15 +5,22 @@ const isIncludeCapitalLetter = (str: string): boolean => {
 const convertStringToLowerCaseArrayOfWords = (str: string): string[] => {
 	let words = [];
 
-	if (str.includes(' ') || str.includes('-') || str.includes('_')) {
+	const processedStr = str.charAt(0).toLowerCase() + str.slice(1);
+
+	if (
+		processedStr.includes(' ') ||
+		processedStr.includes('-') ||
+		processedStr.includes('_')
+	) {
 		// deal with kebab-case, snake_case, and regular case
-		words = str.split(/[-_\s]/);
-	} else if (isIncludeCapitalLetter(str)) {
+		words = processedStr.split(/[-_\s]/);
+	} else if (isIncludeCapitalLetter(processedStr)) {
 		// deal with camelCase and PascalCase
-		const newStr = str.replace(/([A-Z])/g, ' $1');
-		words = newStr.split(' ');
+		const newprocessedStr = processedStr.replace(/([A-Z])/g, ' $1');
+		words = newprocessedStr.split(' ');
 	} else {
-		words.push(str);
+		// deal with single word
+		words = [processedStr];
 	}
 
 	return words.map((word) => word.toLowerCase());
@@ -21,20 +28,23 @@ const convertStringToLowerCaseArrayOfWords = (str: string): string[] => {
 
 const toKebabCase = (str: string): string => {
 	const words = convertStringToLowerCaseArrayOfWords(str);
-	return words.join('-');
+	if (words.length === 1) {
+		return words[0];
+	} else {
+		return words.join('-');
+	}
 };
 
 const toCamelCase = (str: string): string => {
 	const words = convertStringToLowerCaseArrayOfWords(str);
-	return words
-		.map((word, index) => {
-			if (index === 0) {
-				return word;
-			} else {
-				return word.charAt(0).toUpperCase() + word.slice(1);
-			}
-		})
-		.join('');
+	const firstWord = words[0];
+	const otherWords = words.slice(1);
+	return (
+		firstWord +
+		otherWords
+			.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+			.join('')
+	);
 };
 
 const toSnakeCase = (str: string): string => {

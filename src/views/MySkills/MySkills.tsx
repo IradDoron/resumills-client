@@ -209,7 +209,6 @@ export const MySkills = () => {
 					margin: '0 auto',
 					padding: '12px 24px',
 					width: '60%',
-					border: '1px solid green',
 					position: 'relative',
 				}}
 			>

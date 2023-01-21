@@ -43,6 +43,95 @@ export const mySkills: MySkills = {
 			relevence: 'relevant',
 			isAdded: false,
 		},
+		{
+			skill: skillsDefinitions.backendFrameworks['Django'],
+			relevence: 'relevant',
+			isAdded: false,
+		},
+	],
+	backendLibraries: [
+		{
+			skill: skillsDefinitions.backendLibraries['TensorFlow.js'],
+			relevence: 'relevant',
+			isAdded: false,
+		},
+		{
+			skill: skillsDefinitions.backendLibraries['Socket.io'],
+			relevence: 'relevant',
+			isAdded: false,
+		},
+	],
+	reactLibraries: [
+		{
+			skill: skillsDefinitions.reactLibraries['React Router'],
+			relevence: 'relevant',
+			isAdded: false,
+		},
+		{
+			skill: skillsDefinitions.reactLibraries['Redux'],
+			relevence: 'relevant',
+			isAdded: false,
+		},
+		{
+			skill: skillsDefinitions.reactLibraries['Recoil'],
+			relevence: 'relevant',
+			isAdded: false,
+		},
+		{
+			skill: skillsDefinitions.reactLibraries['i18next'],
+			relevence: 'relevant',
+			isAdded: false,
+		},
+		{
+			skill: skillsDefinitions.reactLibraries['Axios'],
+			relevence: 'relevant',
+			isAdded: false,
+		},
+		{
+			skill: skillsDefinitions.reactLibraries['Formik'],
+			relevence: 'relevant',
+			isAdded: false,
+		},
+		{
+			skill: skillsDefinitions.reactLibraries['Lodash'],
+			relevence: 'relevant',
+			isAdded: false,
+		},
+		{
+			skill: skillsDefinitions.reactLibraries['Moment.js'],
+			relevence: 'relevant',
+			isAdded: false,
+		},
+		{
+			skill: skillsDefinitions.reactLibraries['React Spring'],
+			relevence: 'relevant',
+			isAdded: false,
+		},
+		{
+			skill: skillsDefinitions.reactLibraries['React Beautiful DnD'],
+			relevence: 'relevant',
+			isAdded: false,
+		},
+		{
+			skill: skillsDefinitions.reactLibraries['React Chart.js 2'],
+			relevence: 'relevant',
+			isAdded: false,
+		},
+		{
+			skill: skillsDefinitions.reactLibraries['Tone.js'],
+			relevence: 'relevant',
+			isAdded: false,
+		},
+		{
+			skill: skillsDefinitions.reactLibraries['abcjs'],
+			relevence: 'relevant',
+			isAdded: false,
+		},
+		{
+			skill: skillsDefinitions.reactLibraries['Tonal.js'],
+			relevence: 'relevant',
+			isAdded: false,
+		},
 	],
 	databases: [
 		{
@@ -159,6 +248,23 @@ export const mySkills: MySkills = {
 			isAdded: true,
 		},
 	],
+	webServices: [
+		{
+			skill: skillsDefinitions.webServices['Amazon Web Services'],
+			relevence: 'relevant',
+			isAdded: false,
+		},
+		{
+			skill: skillsDefinitions.webServices['Google Cloud Platform'],
+			relevence: 'relevant',
+			isAdded: false,
+		},
+		{
+			skill: skillsDefinitions.webServices['Shopify'],
+			relevence: 'relevant',
+			isAdded: false,
+		},
+	],
 	testingTools: [
 		{
 			skill: skillsDefinitions.testingTools['Jest'],
@@ -167,6 +273,18 @@ export const mySkills: MySkills = {
 		},
 		{
 			skill: skillsDefinitions.testingTools['React Testing Library'],
+			relevence: 'relevant',
+			isAdded: false,
+		},
+	],
+	cms: [
+		{
+			skill: skillsDefinitions.cms['Strapi'],
+			relevence: 'relevant',
+			isAdded: false,
+		},
+		{
+			skill: skillsDefinitions.cms['WordPress'],
 			relevence: 'relevant',
 			isAdded: false,
 		},

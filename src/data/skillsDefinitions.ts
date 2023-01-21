@@ -28,6 +28,88 @@ export const skillsDefinitions: SkillDefinitions = {
 				'Next.js is an open-source React front-end development web framework.',
 		},
 	},
+	reactLibraries: {
+		'React Router': {
+			id: '1',
+			name: 'React Router',
+			description: 'React Router is a collection of navigational components.',
+		},
+		Redux: {
+			id: '2',
+			name: 'Redux',
+			description:
+				'Redux is an open-source JavaScript library for managing application state.',
+		},
+		Recoil: {
+			id: '3',
+			name: 'Recoil',
+			description:
+				'Recoil is an experimental state management library for React apps.',
+		},
+		i18next: {
+			id: '4',
+			name: 'i18next',
+			description:
+				'i18next is an internationalization-framework written in and for JavaScript.',
+		},
+		Axios: {
+			id: '5',
+			name: 'Axios',
+			description: 'Axios is a promise-based HTTP client for JavaScript.',
+		},
+		Formik: {
+			id: '6',
+			name: 'Formik',
+			description:
+				'Formik is a small group of React components and hooks for building forms.',
+		},
+		Lodash: {
+			id: '7',
+			name: 'Lodash',
+			description:
+				'Lodash is a JavaScript library which provides utility functions for common programming tasks using the functional programming paradigm.',
+		},
+		'Moment.js': {
+			id: '8',
+			name: 'Moment.js',
+			description:
+				'Moment.js is a JavaScript library that parses, validates, manipulates, and displays dates and times.',
+		},
+		'React Spring': {
+			id: '9',
+			name: 'React Spring',
+			description:
+				'React Spring is a spring-physics based animation library for React.',
+		},
+		'React Beautiful DnD': {
+			id: '10',
+			name: 'React Beautiful DnD',
+			description:
+				'React Beautiful DnD is a set of React components to make beautiful and accessible drag and drop for lists with React.',
+		},
+		'React Chart.js 2': {
+			id: '11',
+			name: 'React Chart.js 2',
+			description: 'React Chart.js 2 is a wrapper for Chart.js.',
+		},
+		'Tone.js': {
+			id: '12',
+			name: 'Tone.js',
+			description:
+				'Tone.js is a Web Audio framework for creating interactive music in the browser.',
+		},
+		abcjs: {
+			id: '13',
+			name: 'abcjs',
+			description:
+				'abcjs is a JavaScript library for rendering music notation.',
+		},
+		'Tonal.js': {
+			id: '14',
+			name: 'Tonal.js',
+			description: 'Tonal.js is a collection of music theory functions.',
+		},
+	},
 	backendFrameworks: {
 		'Node.js': {
 			id: '1',
@@ -46,6 +128,26 @@ export const skillsDefinitions: SkillDefinitions = {
 			name: 'Nest.js',
 			description:
 				'Nest.js is a framework for building efficient, scalable Node.js server-side applications.',
+		},
+		Django: {
+			id: '4',
+			name: 'Django',
+			description:
+				'Django is a Python-based free and open-source web framework.',
+		},
+	},
+	backendLibraries: {
+		'TensorFlow.js': {
+			id: '1',
+			name: 'TensorFlow.js',
+			description:
+				'TensorFlow.js is a JavaScript library for machine learning.',
+		},
+		'Socket.io': {
+			id: '2',
+			name: 'Socket.io',
+			description:
+				'Socket.io enables real-time, bidirectional and event-based communication.',
 		},
 	},
 	databases: {
@@ -328,6 +430,39 @@ export const skillsDefinitions: SkillDefinitions = {
 			id: '5',
 			name: 'Now',
 			description: 'Now is a cloud platform for serverless deployment.',
+		},
+	},
+	webServices: {
+		'Amazon Web Services': {
+			id: '1',
+			name: 'Amazon Web Services',
+			description:
+				'Amazon Web Services is a subsidiary of Amazon providing on-demand cloud computing platforms and APIs to individuals, companies, and governments, on a metered pay-as-you-go basis.',
+		},
+		Shopify: {
+			id: '2',
+			name: 'Shopify',
+			description:
+				'Shopify is a cloud-based, multi-channel commerce platform for high-growth and enterprise businesses.',
+		},
+		'Google Cloud Platform': {
+			id: '3',
+			name: 'Google Cloud Platform',
+			description:
+				'Google Cloud Platform is a suite of cloud computing services.',
+		},
+	},
+	cms: {
+		Strapi: {
+			id: '1',
+			name: 'Strapi',
+			description: 'Strapi is a free and open-source headless CMS.',
+		},
+		WordPress: {
+			id: '2',
+			name: 'WordPress',
+			description:
+				'WordPress is a free and open-source content management system written in PHP and paired with a MySQL or MariaDB database.',
 		},
 	},
 	testingTools: {
