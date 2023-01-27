@@ -16,7 +16,7 @@
 		"noUnusedLocals": true,
 		"noEmit": true,
 		"paths": {
-			"*": ["*"]
+			"@/*": ["*"]
 		},
 		"baseUrl": "src",
 		"jsx": "react-jsx"
