@@ -1,43 +1,41 @@
 // imports from 3rd party libraries
-// import { CssBaseline } from '@mui/material';
-// import { createTheme, ThemeProvider } from '@mui/material/styles';
-// import { useEffect } from 'react';
-// import { useSetRecoilState } from 'recoil';
+import { CssBaseline } from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useEffect } from 'react';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 // components
-// import { NavBar } from 'components/NavBar';
-// import { Router } from 'components/Router/';
-// import { PageWrapper } from 'shared/core/layout/PageWrapper';
+import { NavBar } from 'components/NavBar';
+import { Router } from 'components/Router/';
+import { PageWrapper } from 'shared/core/layout/PageWrapper';
 
 // helpers
-// import { getDesignTokens } from 'utils/helpers/themeHelpers';
+import { getDesignTokens } from 'utils/helpers/themeHelpers';
 
 // store
-// import { skillsState } from 'store';
+import { skillsState, themeState } from 'store';
 
 // data
-// import { mySkills } from 'data/mySkills';
+import { mySkills } from 'data/mySkills';
 
 export const App = () => {
-	// const theme = useRecoilValue(themeState);
-	// const setSkills = useSetRecoilState(skillsState);
+	const theme = useRecoilValue(themeState);
+	const setSkills = useSetRecoilState(skillsState);
 
-	// useEffect(() => {
-	// 	setSkills(mySkills);
-	// }, [setSkills]);
+	useEffect(() => {
+		setSkills(mySkills);
+	}, [setSkills]);
 
 	return (
 		<>
-			{/* <ThemeProvider theme={createTheme(getDesignTokens(theme))}>*/}
-			{/* <CssBaseline /> */}
+			<ThemeProvider theme={createTheme(getDesignTokens(theme))}>
+				<CssBaseline />
 
-			{/* <NavBar />
+				<NavBar />
 				<PageWrapper>
 					<Router />
-				</PageWrapper> */}
-			<h1>hello world</h1>
-
-			{/* </ThemeProvider> */}
+				</PageWrapper>
+			</ThemeProvider>
 		</>
 	);
 };
