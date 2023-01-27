@@ -15,12 +15,12 @@
 		"isolatedModules": true,
 		"noUnusedLocals": true,
 		"noEmit": true,
-		"jsx": "react-jsx",
-		"baseUrl": "src",
 		"paths": {
 			"*": ["*"]
-		}
+		},
+		"baseUrl": "src",
+		"jsx": "react-jsx"
 	},
 	"include": ["src"],
-	"exclude": ["node_modules"]
+	"exclude": ["node_modules", "build", "public"]
 }
