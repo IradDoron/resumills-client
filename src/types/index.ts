@@ -36,7 +36,7 @@ export interface SkillDefinitions {
 export interface MySkill {
 	skill: SkillDefinition;
 	relevence: 'relevant' | 'related' | 'other' | 'notRelevant';
-	isAdded: boolean;
+	status: 'added' | 'notStarted' | 'inProgress';
 	level?: string;
 	priority?: number;
 	workingXp?: number;

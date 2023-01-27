@@ -87,11 +87,7 @@ export const skillsDefinitions: SkillDefinitions = {
 			description:
 				'React Beautiful DnD is a set of React components to make beautiful and accessible drag and drop for lists with React.',
 		},
-		'React Chart.js 2': {
-			id: '11',
-			name: 'React Chart.js 2',
-			description: 'React Chart.js 2 is a wrapper for Chart.js.',
-		},
+
 		'Tone.js': {
 			id: '12',
 			name: 'Tone.js',
@@ -495,6 +491,24 @@ export const skillsDefinitions: SkillDefinitions = {
 			name: 'Selenium',
 			description:
 				'Selenium is a portable framework for testing web applications.',
+		},
+	},
+	dataVisualization: {
+		'React Chart.js 2': {
+			id: '1',
+			name: 'React Chart.js 2',
+			description: 'React Chart.js 2 is a wrapper for Chart.js.',
+		},
+		amCharts: {
+			id: '2',
+			name: 'amCharts',
+			description: 'amCharts is a JavaScript charting library.',
+		},
+		'D3.js': {
+			id: '3',
+			name: 'D3.js',
+			description:
+				'D3.js is a JavaScript library for manipulating documents based on data.',
 		},
 	},
 	UiUx: {

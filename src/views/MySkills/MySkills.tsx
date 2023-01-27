@@ -19,12 +19,12 @@ import { stringHelpers } from 'utils/helpers/stringHelpers';
 
 export const getSkillsByCategoryAndIsAdded = (
 	category: string,
-	isAdded: boolean,
+	status: 'added' | 'notStarted' | 'inProgress',
 	skills: MySkillsType
 ) => {
 	const skillsInCategory = skills[category];
 	const filteredSkills = skillsInCategory.filter(
-		(skill) => skill.isAdded === isAdded
+		(skill) => skill.status === status
 	);
 	return filteredSkills;
 };
@@ -34,7 +34,7 @@ export const onlyAddedSkills = (skills: MySkillsType) => {
 	const addedSkills = skillsKeys.map((category) => {
 		return {
 			category,
-			skills: getSkillsByCategoryAndIsAdded(category, true, skills),
+			skills: getSkillsByCategoryAndIsAdded(category, 'added', skills),
 		};
 	});
 	const removedEmptyCategories = addedSkills.filter(
@@ -53,12 +53,22 @@ export const convertSkillsObjectToArray = (skills: MySkillsType) => {
 };
 
 export const getAddedSkills = (skills: MySkill[]) => {
-	const addedSkills = skills.filter((skill) => skill.isAdded);
+	const addedSkills = skills.filter((skill) => skill.status === 'added');
 	return addedSkills;
 };
 
+export const getSkillsByStatus = (
+	skills: MySkill[],
+	status: 'added' | 'inProgress' | 'notStarted'
+) => {
+	const skillsByStatus = skills.filter((skill) => skill.status === status);
+	return skillsByStatus;
+};
+
 export const getNotAddedSkills = (skills: MySkill[]) => {
-	const notAddedSkills = skills.filter((skill) => !skill.isAdded);
+	const notAddedSkills = skills.filter(
+		(skill) => skill.status === 'notStarted'
+	);
 	return notAddedSkills;
 };
 
@@ -155,7 +165,7 @@ export const MySkills = () => {
 											gap: '12px',
 										}}
 									>
-										{getAddedSkills(skills).map((skill) => {
+										{getSkillsByStatus(skills, 'added').map((skill) => {
 											const { skill: skillDefintion } = skill;
 											const { name } = skillDefintion;
 
@@ -178,7 +188,7 @@ export const MySkills = () => {
 											marginBottom: '12px',
 										}}
 									>
-										Not added
+										In Progress
 									</Typography>
 									<Box
 										sx={{
@@ -190,7 +200,42 @@ export const MySkills = () => {
 											gap: '12px',
 										}}
 									>
-										{getNotAddedSkills(skills).map((skill) => {
+										{getSkillsByStatus(skills, 'inProgress').map((skill) => {
+											const { skill: skillDefintion } = skill;
+											const { name } = skillDefintion;
+
+											return <Chip key={name} label={name} />;
+										})}
+									</Box>
+								</Box>
+								<Box
+									sx={{
+										width: '50%',
+										display: 'flex',
+										flexDirection: 'column',
+										alignItems: 'center',
+									}}
+								>
+									<Typography
+										variant="h3"
+										sx={{
+											fontSize: '1.5rem',
+											marginBottom: '12px',
+										}}
+									>
+										Not Started
+									</Typography>
+									<Box
+										sx={{
+											display: 'flex',
+											flexDirection: 'row',
+											flexWrap: 'wrap',
+											justifyContent: 'center',
+											alignItems: 'center',
+											gap: '12px',
+										}}
+									>
+										{getSkillsByStatus(skills, 'notStarted').map((skill) => {
 											const { skill: skillDefintion } = skill;
 											const { name } = skillDefintion;
 
