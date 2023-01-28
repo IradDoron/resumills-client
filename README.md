@@ -8,4 +8,4 @@ Resumills is a tool that helps to choose which skills to add to your resume.
 
 ## Links
 
-- [Resumills](https://resumills.com)
+- [See project live at: https://resumills.netlify.app/](https://resumills.netlify.app/)
