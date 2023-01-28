@@ -6,8 +6,8 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 // components
 import { NavBar } from 'components/NavBar';
-import { Router } from 'components/Router/';
 import { PageWrapper } from 'shared/core/layout/PageWrapper';
+import { MySkills } from 'views/MySkills/MySkills';
 
 // helpers
 import { getDesignTokens } from 'utils/helpers/themeHelpers';
@@ -33,7 +33,7 @@ export const App = () => {
 
 				<NavBar />
 				<PageWrapper>
-					<Router />
+					<MySkills />
 				</PageWrapper>
 			</ThemeProvider>
 		</>
