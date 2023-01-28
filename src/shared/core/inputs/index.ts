@@ -8,7 +8,6 @@ import { FormControlLabel } from 'shared/core/inputs/FormControlLabel';
 import { FormGroup } from 'shared/core/inputs/FormGroup';
 import { FormLabel } from 'shared/core/inputs/FormLabel';
 import { IconButton } from 'shared/core/inputs/IconButton';
-import { NavLink } from 'shared/core/inputs/NavLink';
 import { Radio } from 'shared/core/inputs/Radio';
 import { RadioGroup } from 'shared/core/inputs/RadioGroup';
 import { Rating } from 'shared/core/inputs/Rating';
@@ -31,7 +30,6 @@ export {
 	Radio,
 	FormLabel,
 	IconButton,
-	NavLink,
 	FormControl,
 	Rating,
 	Slider,

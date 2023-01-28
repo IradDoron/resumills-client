@@ -5,7 +5,6 @@ import { useEffect } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 // components
-import { NavBar } from 'components/NavBar';
 import { PageWrapper } from 'shared/core/layout/PageWrapper';
 import { MySkills } from 'views/MySkills/MySkills';
 
@@ -30,8 +29,6 @@ export const App = () => {
 		<>
 			<ThemeProvider theme={createTheme(getDesignTokens(theme))}>
 				<CssBaseline />
-
-				<NavBar />
 				<PageWrapper>
 					<MySkills />
 				</PageWrapper>

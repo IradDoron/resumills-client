@@ -3,7 +3,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 
-import { BrowserRouter } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 
 const root = ReactDOM.createRoot(
@@ -11,10 +10,8 @@ const root = ReactDOM.createRoot(
 );
 root.render(
 	<React.StrictMode>
-		<BrowserRouter>
-			<RecoilRoot>
-				<App />
-			</RecoilRoot>
-		</BrowserRouter>
+		<RecoilRoot>
+			<App />
+		</RecoilRoot>
 	</React.StrictMode>
 );
